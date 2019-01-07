@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'menu',
@@ -7,25 +8,26 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent {
+  game = 'assets/game-files/classic/index.html';
   initData: Array<any>;
   show = false;
   data: Array<any> = [
     {
-      value: '1',
-      label: 'Classic 2048'
+      value: 'assets/game-files/classic/index.html',
+      label: 'Classic 8402'
     },
     {
-      value: '2',
+      value: 'assets/game-files/flappy/index.html',
       label: 'Flappy 2048'
     },
     {
-      value: '3',
-      label: '2048 Racing'
+      value: 'assets/game-files/racing/index.html',
+      label: 'Racing 2048'
     }
   ];
 
   onChange(value) {
-    console.log(value);
+      this.game = value;
   }
 
   handleClick(e) {
