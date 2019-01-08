@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  game = this.sanitizer.bypassSecurityTrustResourceUrl('assets/game-files/classic/index.html');
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -17,6 +18,10 @@ export class AppComponent {
     public sanitizer: DomSanitizer
   ) {
     this.initializeApp();
+  }
+
+  onChanged(value) {
+    this.game = this.sanitizer.bypassSecurityTrustResourceUrl(value);
   }
 
   initializeApp() {

@@ -1,10 +1,9 @@
 <ion-header>
-  <menu #menu></menu>
+  <menu (onChanged)="onChanged($event)"></menu>
 </ion-header>
 <iframe class="game-container" 
-  [src]="sanitizer.bypassSecurityTrustResourceUrl(menu.game)" 
+  [src]="game" 
   width="100%" 
   height="100%" 
   frameboarder="0">
 </iframe>
-      

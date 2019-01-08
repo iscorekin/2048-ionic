@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'menu',
@@ -8,7 +8,6 @@ import { EventEmitter } from 'events';
   encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent {
-  game = 'assets/game-files/classic/index.html';
   initData: Array<any>;
   show = false;
   data: Array<any> = [
@@ -26,8 +25,11 @@ export class MenuComponent {
     }
   ];
 
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onChanged = new EventEmitter<string>();
+
   onChange(value) {
-      this.game = value;
+      this.onChanged.emit(value);
   }
 
   handleClick(e) {
